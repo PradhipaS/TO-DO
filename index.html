@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>To-Do App | Prioritize Your Day</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="app-container">
+    <div class="content-wrapper">
+      <!-- Header -->
+      <div class="header">
+        <h1 class="app-title">
+          <i data-lucide="clock" class="icon-brain"></i>
+          To-Do App
+        </h1>
+        <p id="task-stats" class="task-stats"></p>
+      </div>
+
+      <!-- Add Task Form -->
+      <div class="task-form-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <i data-lucide="plus" class="icon-plus"></i>
+            Add New Task
+          </h2>
+        </div>
+        <div class="card-content">
+          <form id="add-task-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="task-title" class="form-label">Task Title</label>
+                <input 
+                  id="task-title" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter task title..." 
+                  required
+                >
+              </div>
+              <div class="form-group">
+                <label for="due-date" class="form-label">Due Date</label>
+                <input 
+                  id="due-date" 
+                  type="date" 
+                  class="form-input"
+                >
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="priority" class="form-label">Priority</label>
+                <select id="priority" class="form-select">
+                  <option value="high">High Priority</option>
+                  <option value="medium" selected>Medium Priority</option>
+                  <option value="low">Low Priority</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="category" class="form-label">Category</label>
+                <select id="category" class="form-select">
+                  <option value="Work">Work</option>
+                  <option value="Personal" selected>Personal</option>
+                  <option value="Health">Health</option>
+                  <option value="Learning">Learning</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+  <label for="notify-time" class="form-label">Notification Time</label>
+  <input 
+    id="notify-time" 
+    type="time" 
+    class="form-input" 
+    placeholder="Set reminder time"
+  >
+</div>
+
+            </div>
+            
+            <button type="submit" class="add-task-button">
+              <i data-lucide="plus" class="icon-plus-small"></i>
+              Add Task
+            </button>
+          </form>
+          
+        </div>
+      </div>
+
+      <!-- Filter -->
+      <div id="filter-container" class="filter-container hidden">
+        <i data-lucide="filter" class="icon-filter"></i>
+        <label for="filter-category" class="filter-label">Filter by category:</label>
+        <select id="filter-category" class="filter-select">
+          <option value="all">All Categories</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Health">Health</option>
+          <option value="Learning">Learning</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <!-- Tasks List -->
+      <div id="tasks-container" class="tasks-container">
+        <!-- Tasks will be inserted here by JavaScript -->
+      </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Templates for JavaScript to use -->
+  <template id="task-template">
+    <div class="task-card" data-id="">
+      <div class="task-content">
+        <div class="task-checkbox-container">
+          <input type="checkbox" class="task-checkbox">
+        </div>
+        <div class="task-details">
+          <div class="task-header">
+            <h3 class="task-title"></h3>
+            <button class="delete-task-button">
+              <i data-lucide="trash-2" class="icon-trash"></i>
+            </button>
+          </div>
+          <div class="task-badges">
+            <!-- Badges will be inserted here by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="empty-tasks-template">
+    <div class="empty-tasks-card">
+      <p class="empty-tasks-text">No tasks yet. Add your first task above!</p>
+    </div>
+  </template>
+
+  <template id="empty-filtered-tasks-template">
+    <div class="empty-tasks-card">
+      <p class="empty-tasks-text">No tasks in <span class="category-name"></span> category.</p>
+    </div>
+  </template>
+
+  <script src="backend1.js"></script>
+  <script src="frontend1.js"></script>
+</body>
+</html>
